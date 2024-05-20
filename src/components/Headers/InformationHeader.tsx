@@ -17,7 +17,7 @@ function InformativeHeader() {
 
         <div className="flex items-center space-x-5">
             <h3>English</h3>
-            <h3>login</h3>
+            <Link to="/drip/login">login</Link>
             <CiHeart className="text-2xl"/>
         </div>
         </div>
