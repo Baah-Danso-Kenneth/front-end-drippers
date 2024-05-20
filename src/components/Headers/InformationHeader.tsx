@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function InformativeHeader() {
   return (
     <div>
-        <div className="flex mx-20 pt-5 justify-between items-center">
+        <div className="flex mx-10 pt-5 justify-between items-center">
         <div className="flex space-x-5">
             <h3>womenswear</h3>
             <h3>Menswear</h3>

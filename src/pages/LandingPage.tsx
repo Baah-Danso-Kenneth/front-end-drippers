@@ -10,7 +10,7 @@ function LandingPage() {
             <img className="w-30 h-30 object-cover"src={Image} alt="banner-img" />
           </div>  
 
-          <Link className='border border-white w-3/12 p-1 text-2xl text-white text-center' to="/drippers/information">
+          <Link className='border border-white w-3/12 p-1 text-2xl text-white text-center' to="/drip/information">
             <button className='uppercase'>go</button>
           </Link>
     </div>
