@@ -56,7 +56,7 @@ function Login() {
             </div>
 
             <div className="grid grid-cols-2 gap-5">
-                <p><Link to="/">Forgot password?</Link></p>
+                <p><Link to="/drip/forgot-password">Forgot password?</Link></p>
                 <p><Link to="/drip/register">Dont have an account?</Link></p>
             </div>
          </div>
