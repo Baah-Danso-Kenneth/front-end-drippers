@@ -38,16 +38,14 @@ function Header() {
           <input className='outline-none border-none bg-transparent flex-grow ml-3 p-2'placeholder='search for style' type='text'/>
         <BiSearch className='text-[#000] mr-3 text-2xl' />
       </div>
-      
-      {user ? (
 
+      {user ? (
         <div className='flex items-center justify-between space-x-5 text-3xl'>
           <CiUser />
           <CiHeart/>
         <HiOutlineShoppingBag/>
         </div>
-      ): <h1>:)</h1>}
-
+      ): <h1>upness</h1>}
     </div>
   )
 }
