@@ -6,6 +6,7 @@ import Register from '../pages/auth/Register'
 import ForgotPassword from '../pages/auth/ForgotPassword'
 import WelcomePage from '../pages/WelcomePage'
 import PageNotFound from '../components/PageNotFound'
+import ActivateAccount from '../pages/ActivateAccount'
 
 function AppRouter() {
   return (
@@ -25,6 +26,7 @@ function AppRouter() {
             <Route path="kids" element={<h1>kids</h1>}/>
         </Route>
 
+        <Route path="/activate/account/:uid/:token" element={<ActivateAccount/>}/>
         <Route path="*" element={<PageNotFound/>}/>
 
     </Routes>
