@@ -3,10 +3,24 @@ import {BiSearch} from "react-icons/bi"
 import { CiUser } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/features/customHooks';
+import { logout, reset } from '../../redux/features/auth/authSlice';
 
 
 function Header() {
+
+  const navigate=useNavigate()
+  const dispatch = useAppDispatch()
+  const {user} = useAppSelector((state)=>state.auth)
+
+  const logoutUser=()=>{
+    dispatch(logout());
+    dispatch(reset())
+    navigate("/")
+  }
+
+
   return (
     <div className='bg-[#2D2D2D] h-20 text-[#fff] flex items-center justify-between px-10'>
 
@@ -25,11 +39,13 @@ function Header() {
         <BiSearch className='text-[#000] mr-3 text-2xl' />
       </div>
 
-      <div className='flex items-center justify-between space-x-5 text-3xl'>
-        <CiUser />
-        <CiHeart/>
+      {user ? (
+        <div className='flex items-center justify-between space-x-5 text-3xl'>
+          <CiUser />
+          <CiHeart/>
         <HiOutlineShoppingBag/>
-      </div>
+        </div>
+      ): <h1>upness</h1>}
     </div>
   )
 }
