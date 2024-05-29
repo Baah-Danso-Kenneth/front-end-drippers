@@ -5,6 +5,7 @@ import Login from '../pages/auth/Login'
 import Register from '../pages/auth/Register'
 import ForgotPassword from '../pages/auth/ForgotPassword'
 import WelcomePage from '../pages/WelcomePage'
+import PageNotFound from '../components/PageNotFound'
 
 function AppRouter() {
   return (
@@ -23,6 +24,8 @@ function AppRouter() {
             <Route path="men" element={<h1>men</h1>}/>
             <Route path="kids" element={<h1>kids</h1>}/>
         </Route>
+
+        <Route path="*" element={<PageNotFound/>}/>
 
     </Routes>
   )
