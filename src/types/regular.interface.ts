@@ -25,3 +25,7 @@ export interface NewsProps{
     image: string;
     notification: string;
 }
+
+export interface FormState{
+    [key: string]: string
+}

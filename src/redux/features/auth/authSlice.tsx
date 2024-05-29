@@ -78,7 +78,6 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.isError = false;
             state.isSuccess = false;
-            state.user = null;
             state.isError = false;
         },
     },
@@ -106,14 +105,16 @@ export const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isError = false;
+                state.isSuccess = true;
                 state.user = action.payload.user;
+                state.message = "Login Successful"
             })
             .addCase(login.rejected, (state, action) => {
                 const payload = action.payload as string | undefined;
                 state.isLoading = false;
                 state.isError = true;
                 state.user = null;
-                state.message = payload || "Unknown error";
+                state.message = payload || "Login Failed";
             })
             .addCase(logout.fulfilled, (state) => {
                 state.user = null;
