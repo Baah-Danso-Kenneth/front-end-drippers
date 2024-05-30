@@ -12,7 +12,7 @@ export interface RegisterUserData{
     last_name: string;
     email: string;
     password: string;
-    re_password: string
+    re_password?: string
 }
 
 export interface LoginUserData{

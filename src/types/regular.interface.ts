@@ -27,5 +27,15 @@ export interface NewsProps{
 }
 
 export interface FormState{
-    [key: string]: string
+    email: string;
+    re_password: string ;
+    password: string;
+    username: string;
+    first_name: string;
+    last_name: string;
+}
+
+export interface LoginFormState{
+    email: string;
+    password: string;
 }

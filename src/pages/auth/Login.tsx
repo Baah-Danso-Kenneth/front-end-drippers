@@ -6,14 +6,20 @@ import { FaFacebook } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { useAppDispatch, useAppSelector } from "../../redux/features/customHooks";
 import { useEffect, useRef, useState } from "react";
-import { FormState } from "../../types/regular.interface";
+import {  LoginFormState } from "../../types/regular.interface";
 import { toast } from 'react-toastify';
 import { login, reset } from "../../redux/features/auth/authSlice";
 import { RootState } from "../../redux/app/store";
 
 
 function Login() {
-    const [form, setForm] = useState<FormState>({ email: '', password: '' });
+
+    const initialFormState:LoginFormState={
+        email: '',
+        password: ''
+    }
+
+    const [form, setForm] = useState<LoginFormState>(initialFormState);
     const formRef = useRef<HTMLFormElement>(null);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -32,7 +38,7 @@ function Login() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setForm((prev: FormState) => ({ ...prev, [name]: value }));
+        setForm((prev: LoginFormState) => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
