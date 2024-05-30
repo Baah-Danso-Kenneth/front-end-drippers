@@ -79,6 +79,7 @@ export const authSlice = createSlice({
             state.isError = false;
             state.isSuccess = false;
             state.isError = false;
+            state.message = "";
         },
     },
 
@@ -123,16 +124,14 @@ export const authSlice = createSlice({
             .addCase(activate.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(activate.fulfilled, (state, action) => {
+            .addCase(activate.fulfilled, (state) => {
                 state.isLoading = false;
-                state.isError = false;
-                state.user = action.payload.user;
+                state.isSuccess = true;
             })
             .addCase(activate.rejected, (state, action) => {
                 const payload = action.payload as string | undefined;
                 state.isLoading = false;
                 state.isError = true;
-                state.user = null;
                 state.message = payload || "Unknown error";
             });
     }

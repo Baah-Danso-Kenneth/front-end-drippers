@@ -26,7 +26,7 @@ function AppRouter() {
             <Route path="kids" element={<h1>kids</h1>}/>
         </Route>
 
-        <Route path="/activate/account/:uid/:token" element={<ActivateAccount/>}/>
+        <Route path="/activate/:uid/:token" element={<ActivateAccount/>}/>
         <Route path="*" element={<PageNotFound/>}/>
 
     </Routes>
