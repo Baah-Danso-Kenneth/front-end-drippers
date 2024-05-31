@@ -53,3 +53,10 @@ export interface AuthState{
     isSuccess: boolean;
     message: string;
 }
+
+export interface PasswordReset{
+    uid: string;
+    token: string;
+    new_password: string;
+    re_new_password: string;
+}

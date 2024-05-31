@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import authService from "./authService";
-import { ActivateUserData, AuthResponseData, AuthState, LoginUserData, RegisterUserData, User } from "../../../types/auth.interface";
+import { ActivateUserData, AuthResponseData, AuthState, LoginUserData, PasswordReset, RegisterUserData, User } from "../../../types/auth.interface";
 import { isAxiosError } from "axios";
 
 
@@ -70,6 +70,41 @@ export const activate= createAsyncThunk<AuthResponseData, ActivateUserData>(
     }
 )
 
+export const resetPassword = createAsyncThunk<void, {email: string}>(
+    "auth/resetPassword",
+    async(userData, thunkAPI)=>{
+        try {
+            await authService.resetPassword(userData)
+        } catch (error) {
+            let message:string;
+            if(isAxiosError(error)){
+                message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            }else{
+                message = "An error occured"
+            }
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+);
+
+export const confirmResetPassword = createAsyncThunk<void, PasswordReset>(
+    "auth/confirmResetPassword",
+    async(userData, thunkAPI)=>{
+        try {
+           await authService.confirmPassword(userData) 
+        } catch (error) {
+            let message:string;
+            if(isAxiosError(error)){
+                message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            }else{
+                message = "An error occured while resetting the password"
+            }
+
+            return thunkAPI.rejectWithValue(message)
+    }
+    }
+);
+
 export const authSlice = createSlice({
     name: "auth",
     initialState,
@@ -133,9 +168,35 @@ export const authSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
                 state.message = payload || "Unknown error";
-            });
-    }
-    
+            })
+            .addCase(resetPassword.pending,(state)=>{
+                state.isLoading = true
+            })
+            .addCase(resetPassword.fulfilled,(state)=>{
+                state.isLoading = false
+                state.isSuccess = true
+            })
+            .addCase(resetPassword.rejected, (state, action)=>{
+                const payload = action.payload as string | undefined
+                state.isLoading = false
+                state.isError = true
+                state.message = payload || "Unknown error"
+            })
+
+            .addCase(confirmResetPassword.pending, (state)=>{
+                state.isLoading = true
+            })
+            .addCase(confirmResetPassword.fulfilled, (state)=>{
+                state.isLoading = false
+                state.isSuccess = true
+            })
+            .addCase(confirmResetPassword.rejected, (state, action)=>{
+                const payload = action.payload as string | undefined
+                state.isError = true
+                state.isLoading = false
+                state.message = payload || "unknown error"
+            })
+    } 
 
 });
 
