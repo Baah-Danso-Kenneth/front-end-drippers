@@ -1,42 +1,45 @@
-import CategoryImage1 from '../../../../assets/styles/category1.jpg'
-import CategoryImage2 from '../../../../assets/styles/category2.jpg'
-import CategoryImage3 from '../../../../assets/styles/category.jpg'
-import { CategoryProps } from '../../../../types/regular.interface';
+import { useEffect, useState } from "react"
+import { CategoryProps } from "../../../../types/regular.interface"
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-
-const categoriesDummyData: CategoryProps[] = [
-    {
-        id: 1,
-        department: 'Womenwear',
-        image: CategoryImage1
-    },
-    {
-        id: 2,
-        department: 'menwear',
-        image: CategoryImage2
-    },
-    {
-        id: 3,
-        department: 'kidswear',
-        image: CategoryImage3
-    }
-]
-
+const BASE_URL = import.meta.env.VITE_API_URL || " "
+const CATEGORY = "v1/categories"
 
 
 function Categories() {
+  const [categories, setCategories] = useState<CategoryProps[]>([]);
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    axios.get(`${BASE_URL}${CATEGORY}`)
+    .then((response)=>{
+        setCategories(response.data);
+    })
+    .catch(()=>{
+      toast.error('yawa')
+    })
+  },[]);
+
+
+  const handleCategoryClick=(name: string)=>{
+    const path= `/welcome/drip/${name.toLowerCase()}`;
+    navigate(path);
+  }
+
   return (
     <div className='mx-10 pt-5 pb-20'>
     <div className='grid grid-cols-3 gap-10'>
-        {categoriesDummyData.map(({id, department,image})=>{
+        {categories.map(({id, name, image})=>{
             return(
-                <div key={id} className='relative'>
+                <div key={id} className='relative' onClick={()=>handleCategoryClick(name)}>
                     <div className='border'>
-                      <img className="w-full h-[250px] object-cover" src={image} alt={`${department}${id}`} />
+                      <img className="w-full h-[250px] object-cover" src={image} alt={`${name}${id}`} />
                     </div>
 
                     <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl uppercase'>
-                      <p>{department}</p>
+                      <p>{name}</p>
                     </div>
                 </div>
 
