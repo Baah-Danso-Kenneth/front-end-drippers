@@ -1,5 +1,5 @@
-import Image from '../assets/welcomeImg/darkish-logo.png';
-import BgLogo from '../assets/welcomeImg/choice2.jpg';
+import Image from '../../assets/welcomeImg/darkish-logo.png';
+import BgLogo from '../../assets/welcomeImg/choice2.jpg';
 
 import { Link } from 'react-router-dom';
 

@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom"
-import Layout from "../components/shared/Layout"
+import Layout from "../../components/shared/Layout"
 import { useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../redux/features/customHooks"
+import { useAppDispatch, useAppSelector } from "../../redux/features/customHooks"
 import { toast } from "react-toastify"
-import { activate, reset } from "../redux/features/auth/authSlice"
-import { ActivateUserData } from "../types/auth.interface"
+import { activate, reset } from "../../redux/features/auth/authSlice"
+import { ActivateUserData } from "../../types/auth.interface"
 
 
 function ActivateAccount() {
@@ -18,10 +18,6 @@ function ActivateAccount() {
 
 
     useEffect(() => {
-        console.log('useEffect - isError:', isError);
-        console.log('useEffect - isSuccess:', isSuccess);
-        console.log('useEffect - message:', message);
-
         if (isError) {
             toast.error(message);
         }

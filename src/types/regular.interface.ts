@@ -7,7 +7,7 @@ export interface LayoutProps {
 
 export interface CategoryProps {
     id: number;
-    department: string;
+    name: string;
     image: string;
 }
 
