@@ -17,6 +17,7 @@ function AppRouter() {
         <Route path="/" element={<Navigate to="drip" replace/>}/>
         <Route path="/drip" element={<LandingPage/>}/>
         <Route path="/drip/information" element={<InformationPage/>}/> 
+        
          {/* Authentication */}
         <Route path="/drip/login" element={<Login/>}/>
         <Route path="/drip/register" element={<Register/>}/>

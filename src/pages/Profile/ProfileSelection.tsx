@@ -1,4 +1,3 @@
-// import ContentInformative from "../../components/shared/Informations"
 import CardDetails from "../../components/shared/Cards/Categories"
 import Layout from "../../components/shared/Layout"
 
