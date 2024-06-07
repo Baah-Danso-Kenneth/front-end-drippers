@@ -65,7 +65,7 @@ function Trends() {
             {trends.map(({id, image, title, type})=>{
                 return(
                     <div className='ml-5 flex items-center border-t-2 border-b-2'>
-                        <div>
+                        <div key={id}>
                             <img src={image} alt={`${id}`} />
                         </div>
 

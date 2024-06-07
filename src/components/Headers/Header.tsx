@@ -6,6 +6,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi"
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/features/customHooks';
 import { logout, reset } from '../../redux/features/auth/authSlice';
+import BaseHeaderConent from './BaseHeaderConent';
 
 
 function Header() {
@@ -22,6 +23,7 @@ function Header() {
 
 
   return (
+    <div>
     <div className='bg-[#2D2D2D] h-20 text-[#fff] flex items-center justify-between px-10'>
 
       <Link to="/">
@@ -29,9 +31,9 @@ function Header() {
       </Link>
 
       <div className='flex space-x-20'>
-          <div>Men</div>
-          <div>women</div>
-          <div>kids</div>
+          <Link to="/welcome/drip/men">women</Link>
+            <Link to="/welcome/drip/women">Men</Link>
+            <Link to="/welcome/drip/kids">Kidss</Link>
       </div>
 
       <div className='items-center flex border rounded-full p-1 w-6/12 bg-[#fff] '>
@@ -46,6 +48,9 @@ function Header() {
         <HiOutlineShoppingBag/>
         </div>
       ): <h1>upness</h1>}
+    </div>
+
+     <BaseHeaderConent/>
     </div>
   )
 }
