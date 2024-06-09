@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetStylesQuery } from "../../redux/RTKQueries/FashionStyle/styleApi";
 
@@ -58,7 +58,7 @@ function BaseHeaderContent() {
               {isLoading && <h1>Loading...</h1>}
               {error && <h1>Error loading styles</h1>}
               {data && Array.isArray(data.titles) ? (
-                data.titles.map((title, index) => (
+                data.titles.map((title: string, index: number) => (
                   <div key={index} className="border p-3 m-2">
                     <h4>{title}</h4>
                     {/* Render other style information here if necessary */}

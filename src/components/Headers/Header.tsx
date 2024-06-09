@@ -31,8 +31,8 @@ function Header() {
       </Link>
 
       <div className='flex space-x-20'>
-          <Link to="/welcome/drip/men">women</Link>
-            <Link to="/welcome/drip/women">Men</Link>
+          <Link to="/welcome/drip/women">women</Link>
+            <Link to="/welcome/drip/men">Men</Link>
             <Link to="/welcome/drip/kids">Kidss</Link>
       </div>
 
