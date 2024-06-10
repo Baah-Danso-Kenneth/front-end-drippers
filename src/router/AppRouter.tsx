@@ -11,6 +11,7 @@ import PasswordResetRequest from '../pages/Auth/PasswordResetRequest'
 import PasswordResetConfirm from '../pages/Auth/PasswordResetConfirm'
 import ProfileSelection from '../pages/Profile/ProfileSelection'
 import WomenPage from '../pages/CategoryPages/WomenPage'
+import MenPage from '../pages/CategoryPages/MenPage'
 
 function AppRouter() {
   return (
@@ -28,7 +29,7 @@ function AppRouter() {
 
         <Route path="/welcome/drip" element={<WelcomePage/>}>
             <Route path="women" element={<WomenPage/>}/>
-            <Route path="men" element={<h1>men</h1>}/>
+            <Route path="men" element={<MenPage/>}/>
             <Route path="kids" element={<h1>kids</h1>}/>
         </Route>
         

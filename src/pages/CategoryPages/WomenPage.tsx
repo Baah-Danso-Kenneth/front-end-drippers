@@ -7,16 +7,16 @@ import { FashionItem } from "../../types/fashion.interfaces";
 
 import { toast } from "react-toastify";
 
-// const WOMEN_CATEGORY = 'women'
+
+const WOMEN_CATEGORY = 'women'
 
 function WomenPage() {
   const { data, error, isLoading } = useGetFashionInspoQuery(undefined);
   const [isHovered, setHovered] = useState<boolean>(false)
 
-  // const womenItems = data ? data.filter((item: FashionItem) => item.styles.category.toString() === WOMEN_CATEGORY) : [];
+  const womenItems = data ? data.filter((item: FashionItem) => item.styles.category.name === WOMEN_CATEGORY) : [];
   
 
-  
   return (
     <div>
       {error && toast.error("Something happened")}
@@ -26,22 +26,24 @@ function WomenPage() {
         </div>
       )}
 
-      {data.map((obj: FashionItem)=>{
+      { womenItems.length > 0 ? (womenItems.map(( obj: FashionItem)=>{
         return(
-          <div key={obj.id}>
-              <h2>{obj.title}</h2>
-              <p className="text-xs">{obj.styles.title}</p>
-              {obj.images.map((image)=>{
+          <div  key={obj.id}>
+            <p>{obj.title}</p>
+            <p>{obj.styles.category.name}</p>
+
+            <div onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)} className="w-16">
+              {obj.images.map(({front_image, back_image})=>{
                 return(
-                  <div onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
-                    <img src={isHovered ? image.back_image : image.front_image} alt={`${image.front_image}.text`} />
-                  </div>
+                    <img src={isHovered ? back_image : front_image} alt={isHovered ? `${back_image}.text` : `${front_image}.text`}/>
                 )
               })}
-              <p>{obj.description}</p>
+            </div>
+
           </div>
         )
-      })}
+      })) : <div>Women details not found</div>}
+
     </div>
   );
 }

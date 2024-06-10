@@ -3,7 +3,7 @@ import { CategoryProps } from "./regular.interface";
 export interface StylesProps {
     id: number;
     title: string;
-    categories: CategoryProps[];
+    categories: CategoryProps;
     
 }
 
@@ -15,16 +15,14 @@ export interface StylesStateProps {
     message: string;
     
 }
-
-// Define the structure for the Style
 export interface Style {
   id: number;
   title: string;
-  category: number;
+  category: CategoryProps;
   style_image: string | null;
 }
 
-// Define the structure for the Image
+
 export interface Image {
   id: number;
   front_image: string;
